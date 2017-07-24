@@ -1,0 +1,64 @@
+<div id="div_nowagra">
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+	<br>
+	<h1>{if $gra}Edytuj: {$gra.nazwa}{else}Dodaj nową grę{/if}</h1>
+	<span id="base_url" style="display:none">{$base_url}</span>
+	<br>
+	<form method="post" action="php/gry.php" id="form_gra">
+	{if $gra}
+		<input type="hidden" name="action" value="edytuj">
+		<input type="hidden" name="id" value="{$gra.id}">
+	{else}
+		<input type="hidden" name="action" value="dodaj">
+	{/if}
+	<div class="center">
+		<span class="red">Wpisz nazwę gry<br></span>
+		<h2>Nazwa Gry:</h2><input class="input required" name="nazwa" value="{$gra.nazwa}">
+	</div>
+	<div style="display:inline-block; vertical-align:top; width: 600px; margin-left:10px;">
+		<div class="center"><h2>Opis gry:</h2><span class="red check_span2"><br>Uzupełnij opis gry</span></div>
+		<p style="padding:8px 35px;">Kody lub linki do gier wklej w normalnym trybie edytora. <br> Znacznik "więcej" czyli: <strong>&lt;!--more--&gt;</strong> wklej w miejscu gdzie chcesz rozdzielić zawartość w trybie "Źródło dokumentu".</p>
+		<textarea name="opis" placeholder="Opis gry" id="editor1">{$gra.opis}</textarea>
+		<script type="text/javascript">
+			CKEDITOR.replace('opis'); CKEDITOR.config.width = 630; CKEDITOR.config.height = 250; CKEDITOR.config.allowedcontent = true; CKEDITOR.config.extraAllowedContent = 'div[id]; object[id,name,width,height]; param[name,value]; embed[src,type,allowscriptaccess,allowfullscreen,wmode,width,height]; script[src]';
+		</script><br><br>
+		<div class="center"><h2>Keywords SEO:<input class="input" name="keywords" value="{$gra.keywords}"></h2></div><br>
+		<div class="center"><h2>Description SEO:</h2><textarea name="description" class="input" style="width: 300px; height: 100px; margin-bottom:-3px;">{$gra.description}</textarea></div>
+	</div>
+	<div style="display:inline-block; vertical-align:top; width: 200px; margin-left: 40px;">
+		<div class="center"><h2>Kategorie:</h2><span class="red check_span"><br>Wybierz minimum jedną kategorię</span></div>
+		<div style="padding-left: 20px; padding-top: 8px;">
+		{foreach key=key item=item from=$kategorie}
+			<label style="padding-left:30px"><input type="checkbox" name="kategorie[]" value="-{$item.id}-" class="check_kategorie" {if strpos($gra.kategorie, $item.id_myslniki)!== false}  checked="checked" {/if}>{$item.nazwa}</label>
+		{/foreach}
+			<input class="input" name="nowakategoria" placeholder="Nowa kategoria" style="width:160px; margin-top:8px">
+		</div><br>
+		<div class="center"><h2>Slider:</h2>
+			<p>Wybierz czy gra ma się wyświetlać także w sliderze. Uwaga! Maksymalny rozmiar grafiki to <span style="color:red">300px x 250px</span>!</p>
+			<label style="margin-top:5px"><input type="checkbox" name="slider" value="1" {if $gra.slider==1}  checked="checked" {/if}>Slider</label>
+		</div><br>
+		<div class="center"><h2>Tagi:</h2></div>
+		<div style="padding-left: 20px; padding-top: 4px;">
+		{foreach key=key item=item from=$tagi name=tagi}
+			{if $smarty.foreach.tagi.iteration < 9}
+				<label style="padding-left:30px"><input type="checkbox" name="tagi[]" value="-{$item.id}-" {if strpos($gra.tagi, $item.id_myslniki)!== false}  checked="checked" {/if}>{$item.nazwa}</label>
+			{elseif $smarty.foreach.tagi.iteration == 9}
+				<a href="#" class="link_css pokaz_tagi" style="margin-left:20px; margin-top:3px; height: 15px; padding: 4px 8px; font-size: 13px;">Pokaż wszystkie</a>
+				<label style="padding-left:30px" class="hide_tag"><input type="checkbox" name="tagi[]" value="-{$item.id}-" {if strpos($gra.tagi, $item.id_myslniki)!== false}  checked="checked" {/if}>{$item.nazwa}</label>
+			{else}
+				<label style="padding-left:30px" class="hide_tag"><input type="checkbox" name="tagi[]" value="-{$item.id}-" {if strpos($gra.tagi, $item.id_myslniki)!== false}  checked="checked" {/if}>{$item.nazwa}</label>
+			{/if}
+		{/foreach}
+			<p style="margin-top:8px">Wpisz nowe tagi, każdy po przecinku:</p>
+			<textarea name="dodajtagi" placeholder="Dodaj tagi" class="input" style="width:160px; height: 60px; margin-top:8px"></textarea>
+		</div>
+	</div>
+	<br><br>
+	<div class="center">
+		<input type="submit" class="submit" value="{if $gra}Zapisz{else}Dodaj grę{/if}"/>
+		<a href="#" class="link" style="margin-left:10px" onClick="history.go(-1)">Anuluj</a>
+	</div>
+    </form>
+</div>
+
+	

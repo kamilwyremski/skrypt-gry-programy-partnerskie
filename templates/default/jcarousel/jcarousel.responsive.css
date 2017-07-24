@@ -1,0 +1,80 @@
+.jcarousel-wrapper {
+    margin: 20px auto;
+	width: 1100px;
+    position: relative;
+    border: solid 1px grey;
+    border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.7); background-color: black;
+}
+
+.jcarousel {
+    position: relative;
+    overflow: hidden;
+	padding: 20px 22px;
+}
+
+.jcarousel ul {
+    width: 20000em;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.jcarousel li {
+    width: 300px; height: 250px; overflow: hidden;
+    float: left;
+    border: 1px solid #fff;
+	margin: 0 25px; padding:0px;
+}
+.jcarousel p{
+	color: #9fa0a6; 
+	line-height:0;
+	font-size: 100%;
+}
+.jcarousel br{
+	display: none;
+}
+.jcarousel object{
+	display: block; margin:0; padding:0;
+}
+.jcarousel img {
+    display: block;
+    max-width: 100%;
+    height: auto !important;
+}
+
+/** Carousel Controls **/
+
+.jcarousel-control-prev,
+.jcarousel-control-next {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #4E443C;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 1px #000;
+    font: 24px/27px Arial, sans-serif;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-box-shadow: 0 0 4px #F0EFE7;
+    -moz-box-shadow: 0 0 4px #F0EFE7;
+    box-shadow: 0 0 4px #F0EFE7;
+	opacity:0.8;
+}
+
+.jcarousel-control-prev {
+    left: 8px;
+}
+
+.jcarousel-control-next {
+    right: 8px;
+}
+
+.jcarousel-control-prev:hover, .jcarousel-control-next:hover{
+	color: white; text-decoration: none; opacity:1;
+}

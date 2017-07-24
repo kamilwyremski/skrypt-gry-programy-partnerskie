@@ -1,0 +1,56 @@
+	<div class="page_box" id="usun_polecane">
+		<div class="inside_page_box">
+			<h1>Usuń stronę: <span class="this_nazwa_text"></span></h1>
+			<form method="post" action="php/polecane.php" class="form">
+				<input type="hidden" name="action" value="usun">
+				<input type="hidden" name="id" value="" class="this_id">
+				<input type="submit" name="add" value="Tak" class="submit"/>
+				<input type="reset" name="cancel" value="Nie" class="submit nie"/>
+			</form>
+		</div>
+	</div>
+	<div class="page_box" id="edytuj_polecane">
+		<div class="inside_page_box">
+			<h1>Edytuj stronę: <span class="this_nazwa_text"></span></h1>
+			<form method="post" action="php/polecane.php" class="form">
+				<input type="hidden" name="action" value="edytuj">
+				<input type="hidden" name="id" value="" class="this_id">
+				<input class="input this_nazwa" type="text" name="nazwa" placeholder="Nazwa strony"><br>
+				<input class="input this_url" type="text" name="url" placeholder="Adres Url"><br>
+				<input type="submit" name="add" value="Zapisz" class="submit"/>
+				<input type="reset" name="cancel" value="Anuluj" class="submit nie"/>
+			</form>
+		</div>
+	</div>
+	<div class="page_box" id="dodaj_polecane">
+		<div class="inside_page_box">
+			<h1>Dodaj stronę: </h1>
+			<form method="post" action="php/polecane.php" class="form">
+				<input type="hidden" name="action" value="dodaj">
+				<input class="input" type="text" name="nazwa" placeholder="Nazwa strony"><br>
+				<input class="input" type="text" name="url" placeholder="Adres Url"><br>
+				<input type="submit" name="add" value="Dodaj" class="submit"/>
+				<input type="reset" name="cancel" value="Anuluj" class="submit nie"/>
+			</form>
+		</div>
+	</div>
+	<br><div class="center"><a href="#dodaj_polecane" class="link">Dodaj stronę</a></div>
+{if $polecane_strony}
+	<table id="table_tagi">
+		<tr>
+			<td colspan="5">Polecane strony</td>
+		</tr>
+		<tr>
+			<td></td><td>Nazwa</td><td>Url</td><td>Edytuj</td><td>Usuń</td>
+		</tr>
+			{foreach key=key item=item from=$polecane_strony}
+				<tr>
+					<td>{counter}</td>
+					<td>{$item.nazwa}</td>
+					<td><a href="{$item.url}" target="_blank" title="{$item.url}">{$item.url}</a></td>
+					<td><a href="#edytuj_polecane" data-id="{$item.id}" data-nazwa="{$item.nazwa}" data-url="{$item.url}" class="link_form" title="Edytuj: {$item.nazwa}"><img src="img/pencil.png" alt="Edytuj"/></a></td>
+					<td><a href="#usun_polecane" data-id="{$item.id}" data-nazwa="{$item.nazwa}" class="link_form"><img src="img/delete.png" alt="Usuń"/></a></td>
+				</tr>
+			{/foreach}
+	</table>
+{/if}

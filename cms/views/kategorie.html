@@ -1,0 +1,54 @@
+	<div class="page_box" id="usun_kat">
+		<div class="inside_page_box">
+			<h1>Usuń kategorie: <span class="this_nazwa_text"></span></h1>
+			<form method="post" action="php/kategorie.php" class="form">
+				<input type="hidden" name="action" value="usun">
+				<input type="hidden" name="id" value="" class="this_id">
+				<input type="submit" name="add" value="Tak" class="submit"/>
+				<input type="reset" name="cancel" value="Nie" class="submit nie"/>
+			</form>
+		</div>
+	</div>
+	<div class="page_box" id="edytuj_kat">
+		<div class="inside_page_box">
+			<h1>Edytuj nazwę: <span class="this_nazwa_text"></span></h1>
+			<form method="post" action="php/kategorie.php" class="form">
+				<input type="hidden" name="action" value="edytuj">
+				<input type="hidden" name="id" value="" class="this_id">
+				<input class="input this_nazwa" type="text" name="kategoria"><br>
+				<input type="submit" name="add" value="Zapisz" class="submit"/>
+				<input type="reset" name="cancel" value="Anuluj" class="submit nie"/>
+			</form>
+		</div>
+	</div>
+	<div class="page_box" id="dodaj_kat">
+		<div class="inside_page_box">
+			<h1>Dodaj kategorie: </h1>
+			<form method="post" action="php/kategorie.php" class="form">
+				<input type="hidden" name="action" value="dodaj">
+				<input class="input" type="text" name="kategoria"><br>
+				<input type="submit" name="add" value="Dodaj" class="submit"/>
+				<input type="reset" name="cancel" value="Anuluj" class="submit nie"/>
+			</form>
+		</div>
+	</div>
+	<br><div class="center"><a href="#dodaj_kat" class="link" id="dodaj_kategorie">Dodaj kategorie</a></div>
+{if $kategorie}
+	<table id="table_kat">
+		<tr>
+			<td colspan="5">Kategorie</td>
+		</tr>
+		<tr>
+			<td></td><td>Nazwa</td><td>Prosta nazwa</td><td>Edytuj</td><td>Usuń</td>
+		</tr>
+			{foreach key=key item=item from=$kategorie}
+				<tr>
+					<td>{counter}</td>
+					<td><a href="../kategoria/{$item.id}/{$item.prosta_nazwa}" title="{$item.nazwa}">{$item.nazwa}</a></td>				 
+					<td>{$item.prosta_nazwa}</td>
+					<td><a href="#edytuj_kat" data-id="{$item.id}" data-nazwa="{$item.nazwa}" class="link_form" title="Edytuj: {$item.nazwa}"><img src="img/pencil.png" alt="Edytuj"/></a></td>
+					<td><a href="#usun_kat" data-id="{$item.id}" data-nazwa="{$item.nazwa}" class="link_form" title="Usuń: {$item.nazwa}"><img src="img/delete.png" alt="Usuń"/></a></td>
+				</tr>
+			{/foreach}
+	</table>
+{/if}

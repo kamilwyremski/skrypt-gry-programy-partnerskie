@@ -1,0 +1,16 @@
+<div id="kontakt">
+	<h1>Kontakt z nami</h1>
+	<p>Napisz na adres: <a href="mailto:{$ustawienia.email}" title="Napisz do nas">{$ustawienia.email}</a> lub skorzystaj z formularza:</p><br>
+	<form action="php/mail.php" method="post" id="form_kontakt">
+		<input type="hidden" name="email_kontakt" value="{$ustawienia.email}">
+		<table>
+			<tr><td><input type="text" placeholder="Imię i nazwisko" name="imie" value="{$email_imie}"></td>
+				<td rowspan="2" style="text-align:center"><img src="securimage/securimage_show.php" id="image" align="absmiddle" alt="Captcha"/></td>
+			</tr><tr><td><input type="text" placeholder="Adres e-mail" name="email" value="{$email_email}"></td>
+			</tr><tr><td><input type="text" placeholder="Temat" name="temat" value="{$email_temat}"></td>
+				<td><input type="text" name="code" placeholder="Przepisz kod" class="input"></td></tr>
+			</tr><tr><td colspan="2"><textarea name="tresc" placeholder="Tutaj wpisz pytanie do nas" style="margin-top:5px">{$email_tresc}</textarea></td></tr>
+			<tr><td><span class="span_kontakt">{if $email_tresc}Nieprawidłowo przepisany kod{/if}</span></td><td style="text-align:center"><input type="submit" value="Wyślij"></td></tr>
+		</table>
+	</form>
+</div>

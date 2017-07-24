@@ -1,0 +1,42 @@
+<div id="gra">
+	<h1>{$gra.nazwa}</h1>
+	{$gra.opis}
+	<br><br>
+	<div class="wpis_info">
+		<p>Kategorie: {$gra.kategorie_nazwa}.{if $gra.tagi_nazwa} Tagi: {$gra.tagi_nazwa}.{/if} Opublikowano: <span>{$gra.data|date_format:"%e-%m-%Y"}</span></p>
+	</div>
+</div>
+{if $ustawienia.komentarze=='1'}
+<div id="komentarz">
+	<h2>Komentarze</h2><br>
+	{if $komentarze}
+		{foreach from="$komentarze item=item key=key}
+			<div class="komentarz">
+				<span>{$item.podpis}</span> w dniu <span>{$item.czas|date_format:"%e-%m-%Y"}</span> o godzinie <span>{$item.czas|date_format:"%R"}</span> napisał/a:<br>
+				<p>{$item.tresc}</p>
+			</div>
+		{/foreach}	
+		<br>
+		<h3>Dodaj komentarz</h3>
+	{else}
+		<h3>Nie dodano jeszcze żadnych komentarzy. Dodaj pierwszy!</h3>
+	{/if}
+	<br><p>Twój adres e-mail nie będzie wyświetlany{if $ustawienia.komentarze_potwierdzanie != '0'}, ale zostaniego na niego wysłana wiadomość z kodem aktywacyjnym{/if}.</p><br>
+	<form action="{$base_url}php/komentarze.php" method="post" id="form_komentarz">
+		<input type="hidden" name="id" value="{$gra.id}"/>
+		<input type="hidden" name="url" value=""/>
+		<input type="hidden" name="status" value="{if $ustawienia.komentarze_potwierdzanie == '0'}2{else}0{/if}"/>
+		<table>
+			<tr><td colspan="2"><textarea name="komentarz" placeholder="Twój komentarz">{$komentarz_komentarz}</textarea></td><tr>
+			<tr><td rowspan="2" style="text-align:center; width:340px;">
+					<img src="{$base_url}securimage/securimage_show.php" alt="Captcha" style="margin: 10px 0;"/></td>
+				<td><input type="text" name="podpis" placeholder="Podpis" value="{$komentarz_podpis}"></td></tr>
+			<tr><td><input type="text" name="email" placeholder="E-mail" value="{$komentarz_email}"></td></tr>
+			<tr><td><input type="text" name="code" placeholder="Przepisz kod"></td>
+				<td style="text-align:center;"><input type="submit" value="DODAJ"/></td></tr>
+		</table>
+	</form>
+	<br>
+	<p class="red" style="padding-bottom:8px">{if $komentarz_komentarz}Nieprawidłowy kod captcha!{else}&nbsp;{/if}</p>
+</div>
+{/if}

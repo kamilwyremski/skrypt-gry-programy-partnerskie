@@ -1,0 +1,64 @@
+	<br><br><h1>Dodatkowe Strony</h1>
+	<p style="text-align:center; font-size: 13px;">Maksymalna ilość podstron wynosi: 5.<br>Nazwa strony powinna być inna niż "kontakt" albo "cms".</p>
+	
+	<div class="page_box" id="dodaj_strone">
+		<div class="inside_page_box">
+			<h1>Dodaj kurs</h1>
+			<form action="php/strony.php" method="post" class="form">
+				<input type="hidden" name="action" value="dodaj">
+				<input class="input" type="text" name="nazwa" placeholder="Nazwa"/><br>
+				<textarea class="input" name="tresc" placeholder="Treść"/></textarea><br>
+				<input type="submit" name="add" value="Dodaj stronę" class="link_css"/>
+				<input type="reset" name="cancel" value="Anuluj" class="submit nie"/>
+			</form>
+		</div>
+	</div>
+	<div class="page_box" id="edytuj_strone">
+		<div class="inside_page_box">
+			<h1>Edytuj stronę: <span class="this_nazwa_text"></span></h1>
+			<form method="post" action="php/strony.php" class="form">
+				<input type="hidden" name="action" value="edytuj">
+				<input type="hidden" name="id" value="" class="this_id">
+				<input class="input this_nazwa" type="text" name="nazwa" placeholder="Nazwa"/><br>
+				<textarea class="input this_tresc" name="tresc" placeholder="Treść"/></textarea>	<br>		
+				<input type="submit" name="safe" value="Zapisz" class="link_css"/>
+				<input type="reset" name="cancel" value="Anuluj" class="submit nie"/>
+			</form>
+		</div>
+	</div>
+	<div class="page_box" id="usun_strone">
+		<div class="inside_page_box">
+			<h1>Usuń stronę: <span class="this_nazwa_text"></span></h1>
+			<form method="post" action="php/strony.php" class="form">
+				<input type="hidden" name="action" value="usun">
+				<input type="hidden" name="id" value="" class="this_id">
+				<input type="submit" name="add" value="Tak" class="submit"/>
+				<input type="reset" name="cancel" value="Nie" class="submit nie"/>
+			</form>
+		</div>
+	</div>
+	
+{if $strony|@count<5}
+	<div class="center">
+		<br><a href="#dodaj_strone" class="link_form link" data-id="{$nazwa_kategorii.id}" title="Dodaj stronę">Dodaj stronę</a><br>
+	</div>
+{/if}
+
+{if $strony}
+	<table id="table_strony">
+		<tr>
+			<td></td><td>Nazwa</td><td>Treść</td><td>Edytuj</td><td>Usuń</td>
+		</tr>
+			{foreach key=key item=item from=$strony}
+				<tr>
+					<td>{counter}</td>
+					<td><strong>{$item.nazwa}</strong></td>				 
+					<td class="tresc">{$item.tresc}</td>
+					<td><a href="#edytuj_strone" data-id="{$item.id}" data-nazwa="{$item.nazwa}" class="link_form" title="Edytuj: {$item.nazwa}"><img src="img/pencil.png" alt="Edytuj"/></a></td>
+					<td><a href="#usun_strone" data-id="{$item.id}" data-nazwa="{$item.nazwa}" class="link_form" title="Usuń: {$item.nazwa}"><img src="img/delete.png" alt="Usuń"/></a></td>
+				</tr>
+			{/foreach}
+	</table>
+{else}
+	<br><br><h2>Brak dodanych stron</h2>
+{/if}

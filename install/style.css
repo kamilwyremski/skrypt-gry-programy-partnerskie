@@ -1,0 +1,130 @@
+*{
+	margin: 0;	padding: 0;	text-decoration: none; list-style: none;
+}
+body {
+	font-family: 'Lato', sans-serif;
+	min-width:900px;
+	position:relative;
+}
+h1{
+	color: #a8020b;
+	text-shadow: 0px 1px 0px #e5e5ee;
+	font-size:20px;
+	padding-bottom:10px; text-align:center;
+}
+h2{
+	color: #525251;
+	text-shadow: 0px 1px 0px #e5e5ee;
+	font-size:16px; padding-bottom:5px;text-align:center; padding-top: 10px;
+}
+h3{
+	color: red;
+	text-shadow: 0px 1px 0px #e5e5ee;
+	font-size:16px;
+	padding-top: 10px;
+}
+#site{
+	width:900px;
+	margin:auto;
+	box-shadow: 0px 2px 20px rgba(0,0,0,0.1);
+	padding-bottom: 20px;
+}
+#logo{
+	width:300px;
+	margin: auto; margin-top:15px; margin-bottom:15px;
+}
+/* tabele */
+table{
+	border-collapse: collapse;
+	margin:auto;
+	margin-top:30px;
+	color: #555555;
+	font-size:13px;
+}
+table a{
+	color:black; font-weight:bold;
+}
+table a:hover{
+	text-decoration: underline;
+}
+table tr{
+	height: 35px;
+}
+table tr:nth-child(2n){
+	background-color: #f9f9f9;
+}
+table tr td{
+	border: solid 1px #dddddd; padding: 2px 10px;
+}
+table img{
+	opacity:0.8;
+}
+table img:hover{
+	opacity:1;
+}
+table tr td:first-child{
+	font-weight: bold; text-align: right;
+}
+.center{
+	width:100%;
+	text-align:center;
+}
+/* inputs */
+.input{
+	font-weight:bold;
+	font-size:14px;
+	width:240px;
+	background-color: #dfdfdf;
+    border: solid 2px #a4aeb9;
+    border-radius: 2px;
+    color: #545454;
+    padding: 5px 6px;
+    text-shadow: 1px 1px rgba(255, 255, 255, 0.2);
+	margin: 3px;
+}
+.input:active, .input:hover, .input:focus{
+	background-image: linear-gradient(to bottom, white, white);
+    border: solid 2px #18adb5;
+}
+textarea {
+   font-family: inherit;
+   font-size: inherit;
+}
+.link, .submit, .link_css{
+	display:inline-block;
+	padding: 10px 20px; margin-top:10px;
+	background-color: #a4aeb9;
+	color:white;
+	font-size:14px;
+	cursor:pointer;
+	border: solid 1px #dddddd;
+}
+.link:hover, .submit:hover, .link_css:hover{
+	background-color: #5b5e65;
+}
+.red{
+	font-size:12px;	color: red;	display:none; padding-bottom:3px;
+}
+/* footer */
+footer{
+	height: 40px;
+	background-color: #50535a;
+	position:fixed; bottom:0; left:0px; right:0px; opacity:0.9;
+}
+footer div{
+	max-width:880px;
+	margin:auto;
+	padding-top:13px;
+}
+footer div span{
+	float:right; margin-right:10px;
+	color:white;
+	font-size: 11px;
+}
+footer div span a{
+	color:white;
+	font-weight:bold;
+}
+footer div span a:hover{
+	text-decoration: underline;
+}

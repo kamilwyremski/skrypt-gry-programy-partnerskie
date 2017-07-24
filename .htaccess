@@ -1,0 +1,26 @@
+RewriteEngine on
+
+RewriteRule ^install$ /install/index.php [L]
+
+RewriteRule ^cms$ /cms/index.php [L]
+RewriteRule ^cms/ustawienia$ /cms/index.php?ustawienia [L]
+RewriteRule ^cms/strony$ /cms/index.php?strony [L]
+RewriteRule ^cms/gry$ /cms/index.php?gry [L]
+RewriteRule ^cms/gry/([0-9]+)$ /cms/index.php?gry&strona=$1 [L]
+RewriteRule ^cms/gry/([0-9]+)/([a-z-]+)$ /cms/index.php?gry&strona=$1&sortuj=$2 [L]
+RewriteRule ^cms/gry/([0-9]+)/([a-z-]+)/([0-9]+)/([0-9a-z]+)$ /cms/index.php?gry&strona=$1&sortuj=$2&kategoria=$3 [L]
+RewriteRule ^cms/gra$ /cms/index.php?gra [L]
+RewriteRule ^cms/gra/([0-9]+)/([0-9a-z-]+)$ /cms/index.php?gra&id=$1 [L]
+RewriteRule ^cms/kategorie$ /cms/index.php?kategorie [L]
+RewriteRule ^cms/tagi$ /cms/index.php?tagi [L]
+RewriteRule ^cms/komentarze$ /cms/index.php?komentarze [L]
+RewriteRule ^cms/komentarze/([0-9]+)/([0-9a-z-]+)$ /cms/index.php?komentarze&id=$1 [L]
+RewriteRule ^cms/polecane$ /cms/index.php?polecane [L]
+
+RewriteRule ^([0-9]+)/([0-9a-z-&]+)$ /index.php?gra&id=$1 [L]
+RewriteRule ^([0-9]+)/([0-9a-z-&]+)/([0-9a-z]+)$ /index.php?gra&id=$1&aktywacja=$3 [L]
+RewriteRule ^([0-9]+)$ /index.php?strona=$1 [L]
+
+RewriteRule ^([0-9]+)/kategoria/([0-9]+)/([0-9a-z-]+)$ /index.php?strona=$1&kategoria=$3&id=$2 [L]
+RewriteRule ^([0-9]+)/tag/([0-9]+)/([0-9a-z-]+)$ /index.php?strona=$1&tag=$3&id=$2 [L]
+RewriteRule ^([0-9a-z-]+)$ /index.php?gry&site=$1 [L]

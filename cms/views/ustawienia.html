@@ -1,0 +1,187 @@
+﻿<br><br><h1>Ustawienia</h1>
+<form action="php/ustawienia.php" method="post" enctype="multipart/form-data" class="form_ustawienia">
+<table id="ustawienia">
+	<tr>
+		<td colspan="2">Ustawienia strony</td>
+	</tr><tr>
+		<td>Adres URL strony:</td>
+		<td><input class="input" type="text" name="base_url" placeholder="Base URL" value="{$ustawienia.base_url}" required/>
+			<input type="button" class="submit pobierz_url" style="padding: 6px 10px;" value="Pobierz URL"/></td>
+	</tr><tr>
+		<td>Aktywny szablon:</td>
+		<td>
+			<select name="template" class="input">
+				{foreach key=key item=item from=$templates}
+				<option value="{$item}" {if $ustawienia.template==$item}selected{/if}>{$item}</option>
+				{/foreach}
+			</select>
+		</td>
+	</tr><tr>
+		<td>Tytuł strony:</td>
+		<td><input class="input" type="text" name="title" placeholder="Title" value="{$ustawienia.title}" required/></td>
+	</tr><tr>
+		<td>E-mail administratora:</td>
+		<td><input class="input" type="text" name="email" placeholder="Email" value="{$ustawienia.email}"/></td>
+	</tr><tr>
+		<td>Ilość gier na jednej stronie:</td>
+		<td><input class="input onlynumber" type="number" min="1" name="ile_wpisow" placeholder="Ile wpisów" value="{$ustawienia.ile_wpisow}" required/></td>
+	</tr><tr>
+		<td>Losowa kolejność gier:</td>
+		<td>
+			<select name="losowe_wpisy" class="input">
+				<option value="0" {if $ustawienia.losowe_wpisy=='0'}selected{/if}>Nie</option>
+				<option value="1" {if $ustawienia.losowe_wpisy=='1'}selected{/if}>Tak</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td>Box z najlepszymi grami (polecane):</td>
+		<td>
+			<select name="polecane" class="input">
+				<option value="0" {if $ustawienia.polecane=='0'}selected{/if}>Nie</option>
+				<option value="1" {if $ustawienia.polecane=='1'}selected{/if}>Tak</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td>Box z polecanymi stronami:</td>
+		<td>
+			<select name="polecane_strony" class="input">
+				<option value="0" {if $ustawienia.polecane_strony=='0'}selected{/if}>Nie</option>
+				<option value="1" {if $ustawienia.polecane_strony=='1'}selected{/if}>Tak</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td>Ilość nowych gier w boksie:</td>
+		<td><input class="input onlynumber" type="number" min="0" name="ile_nowych" placeholder="Ile nowych gier" value="{$ustawienia.ile_nowych}"/></td>
+	</tr><tr>
+		<td>Komentarze do gier:</td>
+		<td>
+			<select name="komentarze" class="input">
+				<option value="0" {if $ustawienia.komentarze=='0'}selected{/if}>Nie</option>
+				<option value="1" {if $ustawienia.komentarze=='1'}selected{/if}>Tak</option>
+			</select>
+		</td>	
+	</tr><tr>
+		<td>Potwierdzanie komentarzy:</td>
+		<td>
+			<select name="komentarze_potwierdzanie" class="input">
+				<option value="0" {if $ustawienia.komentarze_potwierdzanie=='0'}selected{/if}>Bez potwierdzania</option>
+				<option value="1" {if $ustawienia.komentarze_potwierdzanie=='1'}selected{/if}>Przez e-mail i administratora</option>
+				<option value="2" {if $ustawienia.komentarze_potwierdzanie=='2'}selected{/if}>Tylko przez e-mail</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td>Boks z nowymi komentarzami:</td>
+		<td>
+			<select name="komentarze_nowe" class="input">
+				<option value="0" {if $ustawienia.komentarze_nowe=='0'}selected{/if}>Nie</option>
+				<option value="1" {if $ustawienia.komentarze_nowe=='1'}selected{/if}>Tak</option>
+			</select>
+		</td>	
+	</tr><tr>
+		<td>Ile nowych komentarzy w boksie:</td>
+		<td><input class="input onlynumber" type="number" min="1" name="ile_komentarzy" placeholder="Ile komentarzy" value="{$ustawienia.ile_komentarzy}"/></td>
+	</tr><tr>
+		<td>Slider (min. ilość gier to 3):</td>
+		<td>
+			<select name="slider" class="input">
+				<option value="0" {if $ustawienia.slider=='0'}selected{/if}>Nie</option>
+				<option value="1" {if $ustawienia.slider=='1'}selected{/if}>Tak</option>
+			</select>
+		</td>	
+	</tr><tr>
+		<td>Strona "Kontakt":</td>
+		<td>
+			<select name="kontakt" class="input">
+				<option value="0" {if $ustawienia.kontakt=='0'}selected{/if}>Nie</option>
+				<option value="1" {if $ustawienia.kontakt=='1'}selected{/if}>Tak</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td>Boks ze statystykami:</td>
+		<td>
+			<select name="statystyki" class="input">
+				<option value="0" {if $ustawienia.statystyki=='0'}selected{/if}>Nie</option>
+				<option value="1" {if $ustawienia.statystyki=='1'}selected{/if}>Tak</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td>Boks z wyszukiwarką:</td>
+		<td>
+			<select name="wyszukiwarka" class="input">
+				<option value="0" {if $ustawienia.wyszukiwarka=='0'}selected{/if}>Nie</option>
+				<option value="1" {if $ustawienia.wyszukiwarka=='1'}selected{/if}>Tak</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td>Keywords:</td>
+		<td><textarea class="input" name="keywords" placeholder="Keywords"/>{$ustawienia.keywords}</textarea></td>
+	</tr><tr>
+		<td>Description:</td>
+		<td><textarea class="input" name="description" placeholder="Description"/>{$ustawienia.description}</textarea></td>
+	</tr><tr>
+		<td>Typ logo:</td>
+		<td>
+			<select name="logo" class="input">
+				<option value="0" {if $ustawienia.logo=='0'}selected{/if}>Napis</option>
+				<option value="1" {if $ustawienia.logo=='1'}selected{/if}>Obrazek</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td>Tekst logo (pierwsza linijka):</td>
+		<td><input class="input" type="text" name="logo_text" placeholder="Tekst logo (1)" value="{$ustawienia.logo_text}"/></td>
+	</tr><tr>
+		<td>Tekst logo (druga linijka):</td>
+		<td><input class="input" type="text" name="logo_text2" placeholder="Tekst logo (2)" value="{$ustawienia.logo_text2}"/></td>
+	</tr><tr>
+		<td>Logo (obrazek):</td>
+		<td>{if $ustawienia.logo_url}<a href="{$base_url}{$ustawienia.logo_url}" target="_blank" title="Logo"><img src="{$base_url}{$ustawienia.logo_url}" alt="Logo"/></a><br>{/if}
+			<input type="file" name="logo_image" class="input"/></td>
+	</tr><tr>
+		<td>Favicon:</td>
+		<td>
+			<select name="favicon" class="input">
+				<option value="0" {if $ustawienia.favicon=='0'}selected{/if}>Nie</option>
+				<option value="1" {if $ustawienia.favicon=='1'}selected{/if}>Tak</option>
+			</select>
+		</td>
+	</tr><tr>
+		<td>Favicon (obrazek):</td>
+		<td>{if $ustawienia.favicon_url}<a href="{$base_url}{$ustawienia.favicon_url}" target="_blank" title="Favicon"><img src="{$base_url}{$ustawienia.favicon_url}" alt="Favicon"/></a><br>{/if}
+			<input type="file" name="favicon_image" class="input"/></td>
+	</tr><tr>
+		<td>Kod dużej reklamy u góry:</td>
+		<td><textarea class="input" name="reklama_big" placeholder="Reklama Big"/>{$ustawienia.reklama_big}</textarea></td>
+	</tr><tr>
+		<td>Kod dużej reklamy na dole:</td>
+		<td><textarea class="input" name="reklama_big2" placeholder="Reklama Big 2"/>{$ustawienia.reklama_big2}</textarea></td>
+	</tr><tr>
+		<td>Kod pierwszej reklamy w boksie:</td>
+		<td><textarea class="input" name="reklama_1" placeholder="Reklama 1"/>{$ustawienia.reklama_1}</textarea></td>
+	</tr><tr>
+		<td>Kod drugiej reklamy w boksie:</td>
+		<td><textarea class="input" name="reklama_2" placeholder="Reklama 2"/>{$ustawienia.reklama_2}</textarea></td>
+	</tr><tr>
+		<td>Kod trzeciej reklamy w boksie:</td>
+		<td><textarea class="input" name="reklama_3" placeholder="Reklama 3"/>{$ustawienia.reklama_3}</textarea></td>
+	</tr><tr>
+		<td>Kod czwartej reklamy w boksie:</td>
+		<td><textarea class="input" name="reklama_4" placeholder="Reklama 4"/>{$ustawienia.reklama_4}</textarea></td>
+	</tr><tr>
+		<td>Kod piątej reklamy w boksie:</td>
+		<td><textarea class="input" name="reklama_5" placeholder="Reklama 5"/>{$ustawienia.reklama_5}</textarea></td>
+	</tr><tr>
+		<td>Kod do ukrytego boksu<br>(np google analitics):</td>
+		<td><textarea class="input" name="reklama_ukryta" placeholder="Reklama ukryta"/>{$ustawienia.reklama_ukryta}</textarea></td>
+	</tr><tr>
+		<td>Adres odnośnika w stopce:</td>
+		<td><input class="input" type="text" name="footer_url" placeholder="Footer URL" value="{$ustawienia.footer_url}"/></td>
+	</tr><tr>
+		<td>Nazwa odnośnika w stopce:</td>
+		<td><input class="input" type="text" name="footer_nazwa" placeholder="Footer Nazwa" value="{$ustawienia.footer_nazwa}"/></td>
+	</tr>
+</table>
+<div style="text-align:center; margin:10px">
+	<input type="submit" value="Zapisz" class="submit"/>
+</div>
+</form>
+		

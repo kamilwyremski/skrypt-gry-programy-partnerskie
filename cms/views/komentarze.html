@@ -1,0 +1,68 @@
+	
+	<br><br><h1>{if $kategoria_komentarzy}Komentarze z gry: {$kategoria_komentarzy}{else}Wszystkie komentarze{/if}</h1>
+
+{if $komentarze_0}
+	<table class="table_komentarze">
+		<tr>
+			<td colspan="8">Nieaktywowane komentarze bez potwierdzonego adresu e-mail</td>
+		</tr>
+		<tr>
+			<td></td><td>Gra</td><td>Komentarz</td><td>Autor</td><td>E-mail</td><td>Data</td><td>Dodaj</td><td>Usuń</td>
+		</tr>
+			{foreach key=key item=item from=$komentarze_0}
+				<tr>
+					<td>{counter}</td>
+					<td><a href="../{$item.id}/{$item.prosta_nazwa}">{$item.nazwa}</a></td>
+					<td>{$item.tresc}</td>
+					<td>{$item.podpis}</td>
+					<td>{$item.email}</td>
+					<td>{$item.czas|date_format:"%R %e-%m-%Y"}</td>
+					<td><a href="#" class="dodaj_komentarz" data-id="{$item.0}" title="Dodaj komentarz"><img src="img/add.png" alt="Dodaj"/></a></td>
+					<td><a href="#" class="usun_komentarz" data-id="{$item.0}" title="Usuń komentarz"><img src="img/delete.png" alt="Usuń"/></a></td>
+				</tr>
+			{/foreach}
+	</table>
+{/if}
+{if $komentarze_1}	
+	<table class="table_komentarze">
+		<tr>
+			<td colspan="8">Nieaktywowane komentarze z potwierdzonym adresem e-mail</td>
+		</tr>
+		<tr>
+			<td></td><td>Gra</td><td>Komentarz</td><td>Autor</td><td>E-mail</td><td>Data</td><td>Dodaj</td><td>Usuń</td>
+		</tr>
+			{foreach key=key item=item from=$komentarze_1}
+				<tr>
+					<td>{counter}</td>
+					<td><a href="../{$item.id}/{$item.prosta_nazwa}">{$item.nazwa}</a></td>
+					<td>{$item.tresc}</td>
+					<td>{$item.podpis}</td>
+					<td>{$item.email}</td>
+					<td>{$item.czas|date_format:"%R %e-%m-%Y"}</td>
+					<td><a href="#" class="dodaj_komentarz" data-id="{$item.0}" title="Dodaj komentarz"><img src="img/add.png" alt="Dodaj"/></a></td>
+					<td><a href="#" class="usun_komentarz" data-id={$item.0} title="Usuń komentarz"><img src="img/delete.png" alt="Usuń"/></a></td>
+				</tr>
+			{/foreach}
+	</table>
+{/if}
+{if $komentarze_2}	
+	<table class="table_komentarze">
+		<tr>
+			<td colspan="7">Aktywowane komentarze</td>
+		</tr>
+		<tr>
+			<td></td><td>Gra</td><td>Komentarz</td><td>Autor</td><td>E-mail</td><td>Data</td><td>Usuń</td>
+		</tr>
+			{foreach key=key item=item from=$komentarze_2}
+				<tr>
+					<td>{counter}</td>
+					<td><a href="../{$item.id}/{$item.prosta_nazwa}">{$item.nazwa}</a></td>
+					<td>{$item.tresc}</td>
+					<td>{$item.podpis}</td>
+					<td>{$item.email}</td>
+					<td>{$item.czas|date_format:"%R %e-%m-%Y"}</td>
+					<td><a href="#" class="usun_komentarz" data-id={$item.0} title="Usuń komentarz"><img src="img/delete.png" alt="Usuń"/></a></td>
+				</tr>
+			{/foreach}
+	</table>
+{/if}

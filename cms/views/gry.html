@@ -1,0 +1,60 @@
+	<div class="page_box" id="usun_gre">
+		<div class="inside_page_box">
+			<h1>Usuń grę: <span class="this_nazwa_text"></span></h1>
+			<form method="post" action="php/gry.php" class="form">
+				<input type="hidden" name="action" value="usun">
+				<input type="hidden" name="id" value="" class="this_id">
+				<input type="submit" name="add" value="Tak" class="submit"/>
+				<input type="reset" name="cancel" value="Nie" class="submit nie"/>
+			</form>
+		</div>
+	</div>
+	
+	<div class="center"><br><a href="{$base_url}cms/gra" class="link" title="Dodaj grę">Dodaj grę</a></div>
+
+{if $gry}
+	<table id="table_gry">
+		<tr>
+			<td colspan="9">{if $nazwa_kategorii}Gry z kategorii: {$nazwa_kategorii.nazwa}{else}Wszystkie gry{/if} {$sortowanie}</td>
+		</tr>
+		<tr>
+			<td></td><td>
+				<a href="{$base_url}cms/gry/{$site}/{if $sortuj=='slider'}slider-asc{else}slider{/if}{if $nazwa_kategorii}/{$nazwa_kategorii.id}/{$nazwa_kategorii.prosta_nazwa}{/if}" title="Sortuj po sliderze">Slider</a>
+			</td><td>
+				<a href="{$base_url}cms/gry/{$site}/{if $sortuj=='nazwa'}nazwa-desc{else}nazwa{/if}{if $nazwa_kategorii}/{$nazwa_kategorii.id}/{$nazwa_kategorii.prosta_nazwa}{/if}" title="Sortuj po nazwie">Nazwa</a>
+			</td><td>Kategorie</td><td>Tagi</td><td>
+				<a href="{$base_url}cms/gry/{$site}/{if $sortuj=='data'}data-desc{else}data{/if}{if $nazwa_kategorii}/{$nazwa_kategorii.id}/{$nazwa_kategorii.prosta_nazwa}{/if}" title="Sortuj po dacie">Data</a>
+			</td><td>
+				<a href="{$base_url}cms/gry/{$site}/{if $sortuj=='pozycja'}pozycja-asc{else}pozycja{/if}{if $nazwa_kategorii}/{$nazwa_kategorii.id}/{$nazwa_kategorii.prosta_nazwa}{/if}" title="sortuj po pozycji">Pozycja</a></td><td>Edytuj</td><td>Usuń</td>
+		</tr>
+			{foreach key=key item=item from=$gry name=gry}
+				{if $smarty.foreach.gry.iteration > ($site-1)*20 and $smarty.foreach.gry.iteration <=($site-1)*20+20}
+				<tr>
+					<td>{counter}</td>
+					<td>{if $item.slider==1}<strong>Tak</strong>{else}Nie{/if}</td>
+					<td><a href="../{$item.id}/{$item.prosta_nazwa}">{$item.nazwa}</a></td>
+					<td>{$item.kategorie_nazwa}</td>
+					<td>{$item.tagi_nazwa}</td>
+					<td>{$item.data}</td>
+					<td>
+						{if !$smarty.foreach.gry.first}<a href="#" data-action="up" data-id="{$item.id}" data-kategoria="{$nazwa_kategorii.id}"title="Wyżej" class="pozycja"><img src="img/arrow-up.png" alt="Wyżej"/></a>{/if}
+						{if !$smarty.foreach.gry.last}<a href="#" data-action="down" data-id="{$item.id}" data-kategoria="{$nazwa_kategorii.id}"title="Niżej" class="pozycja"><img src="img/arrow-down.png" alt="Niżej"/></a>{/if}
+					</td>
+					<td><a href="{$base_url}cms/gra/{$item.id}/{$item.prosta_nazwa}" data-id="{$item.id}" data-nazwa="{$item.nazwa}" data-kategoria="{$nazwa_kategorii.i}" title="Edytuj: {$item.nazwa}"><img src="img/pencil.png" alt="Edytuj"/></a></td>
+					<td><a href="#usun_gre" data-id="{$item.id}" data-nazwa="{$item.nazwa}" class="link_form" title="Usuń: {$item.nazwa}"><img src="img/delete.png" alt="Usuń"/></a></td>
+				</tr>
+				{/if}
+			{/foreach}
+	</table>
+	<div id="gry_strony">
+		<span>Gier:<strong> {$gry|@count}</strong>. Strona <strong>{$site}</strong> z <strong>{$ile_stron}</strong></span>
+		{if $site>1}
+			<a href="{$base_url}cms/gry/{$site-1}/{$sortuj}{if $nazwa_kategorii}/{$nazwa_kategorii.id}/{$nazwa_kategorii.prosta_nazwa}{/if}" title="Jedna strona wstecz"><img src="img/button-left.png" alt="Jedna strona wstecz"/></a>
+		{/if}
+		{if $site<$ile_stron}
+			<a href="{$base_url}cms/gry/{$site+1}/{$sortuj}{if $nazwa_kategorii}/{$nazwa_kategorii.id}/{$nazwa_kategorii.prosta_nazwa}{/if}" title="Jedna strona dalej"><img src="img/button-right.png" alt="Jedna strona dalej"/></a>
+		{/if}
+	</div>
+{/if}
+		
+	

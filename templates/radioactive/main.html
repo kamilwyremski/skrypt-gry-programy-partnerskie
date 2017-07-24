@@ -1,0 +1,16 @@
+{if $gry}
+	{foreach key=key item=item from=$gry name=gry}
+		{if $smarty.foreach.gry.iteration > ($site-1)*$ustawienia.ile_wpisow and $smarty.foreach.gry.iteration <=($site-1)*$ustawienia.ile_wpisow+$ustawienia.ile_wpisow}
+			<div class="wpis">
+				<a href="{$base_url}{$item.id}/{$item.prosta_nazwa}"><h1>{$item.nazwa}</h1></a>
+				<div>{$item.krotkiopis}</div>
+				<div class="wpis_zobacz"><a href="{$base_url}{$item.id}/{$item.prosta_nazwa}">Zobacz więcej</a></div>
+				<div class="wpis_info">
+					<p>Kategorie: {$item.kategorie_nazwa}.{if $item.tagi_nazwa} Tagi: {$item.tagi_nazwa}.{/if} Opublikowano: <span>{$item.data|date_format:"%e-%m-%Y"}</span> </p>
+				</div>
+			</div>
+		{/if}
+	{/foreach}
+{else}
+	<h1 style="padding: 20px">Niestety brak gier...</h1>
+{/if}
