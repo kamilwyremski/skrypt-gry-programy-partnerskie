@@ -249,6 +249,7 @@
 	{/if}
 	<div id="wrapper2" data-bottom-top="background-position:0 -300px" data-top-bottom="background-position:0 100" data-smooth-scrolling="off"></div>
 	<footer>
+		<!-- Skrypt na licencji MIT. Usuwanie informacji o autorze oprogramowania jest zakazane -->
 		<p>{if $ustawienia.footer_nazwa}Copyright © by <a href="{$ustawienia.footer_url}" target="_blank" title="{$ustawienia.footer_nazwa}">{$ustawienia.footer_nazwa}</a> - wszelkie prawa zastrzeżone. {/if}Project © 2014 - 2016 by <a href="http://wyremski.pl" target="_blank" title="Tworzenie Stron Internetowych">Kamil Wyremski</a></p>
 	</footer>
 </div>
